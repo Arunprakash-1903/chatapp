@@ -1,20 +1,47 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
+import 'react-native-gesture-handler'
+import LoginScreen from './screens/LoginScreen';
+import {createStackNavigator} from '@react-navigation/stack'
+import SignUp from './screens/SignUp';
+import Home from './screens/Home';
+import AddChat from './screens/AddChat';
+import ChatScreen from './screens/ChatScreen';
+const Stack=createStackNavigator();
+const globalScreenOptions={
+  headerStyle:{
+    backgroundColor:"#2C6BED"
+  },
+  headerTitleStyle:{
+    color:"white"
+  },
+  headerTintColor:"white"
+  
+}
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={globalScreenOptions}>
+<Stack.Screen name="Login" component={LoginScreen} />
+<Stack.Screen name="SignUp" component={SignUp} />
+<Stack.Screen name="Home" component={Home} />
+<Stack.Screen name="AddChat" component={AddChat} />
+<Stack.Screen name="ChatScreen" component={ChatScreen} />
+
+
+</Stack.Navigator>
+
+    
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "pink",
     alignItems: 'center',
     justifyContent: 'center',
   },
